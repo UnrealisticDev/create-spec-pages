@@ -71,7 +71,6 @@ async function main() {
 	specEntries.items.forEach((entry) => {
 		const { slug } = entry.fields;
 		const destinationFile = path.join(destination, slug + '.md');
-		destinationFile.set;
 		if (fs.existsSync(destinationFile)) {
 			console.log(`Skipping [${destinationFile}]. Already exists.`);
 		} else {
