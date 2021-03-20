@@ -14,6 +14,7 @@ function getSpecifierEntries() {
 		return client.getEntries({
 			content_type: 'unrealSpecifier',
 			limit: 1000,
+			select: ['fields.keyFriendly', 'fields.slug', 'sys.id']
 		});
 	} catch (error) {
 		console.error(error);
@@ -21,7 +22,7 @@ function getSpecifierEntries() {
 }
 
 async function main() {
-    const specEntries = await getSpecifierEntries();
+	const specEntries = await getSpecifierEntries();
 }
 
 main();
