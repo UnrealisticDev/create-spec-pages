@@ -1,7 +1,22 @@
 const env = require('dotenv');
+const fs = require('fs');
 const contentful = require('contentful');
 
 env.config();
+
+function validateDestination(destination) {
+	if (!fs.statSync(destination).isDirectory()) {
+		throw new Error(`Destination directory [${destination}] does not exist.`);
+	}
+
+	try {
+		fs.accessSync(destination, fs.constants.W_OK);
+	} catch (error) {
+		throw new Error(
+			`Destination directory [${destination}] cannot be written to: ${error}`
+		);
+	}
+}
 
 const client = contentful.createClient({
 	accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
@@ -14,7 +29,7 @@ function getSpecifierEntries() {
 		return client.getEntries({
 			content_type: 'unrealSpecifier',
 			limit: 1000,
-			select: ['fields.keyFriendly', 'fields.slug', 'sys.id']
+			select: ['fields.keyFriendly', 'fields.slug', 'sys.id'],
 		});
 	} catch (error) {
 		console.error(error);
@@ -22,7 +37,11 @@ function getSpecifierEntries() {
 }
 
 async function main() {
+	const destination = process.argv[2];
+	validateDestination(destination);
+
 	const specEntries = await getSpecifierEntries();
+	specEntries.items.forEach(({ sys, fields }) => {});
 }
 
 main();
