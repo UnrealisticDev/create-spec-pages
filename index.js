@@ -37,7 +37,8 @@ function getSpecifierEntries() {
 }
 
 async function main() {
-	const destination = process.argv[2];
+    const arguments = process.argv.slice(2); // Normalize arguments by excluding first two: node ${filename}
+	const destination = arguments[0];
 	validateDestination(destination);
 
 	const specEntries = await getSpecifierEntries();
