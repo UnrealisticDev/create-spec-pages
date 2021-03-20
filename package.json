@@ -1,16 +1,17 @@
 {
-  "name": "create-spec-pages",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js ./test"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "contentful": "^8.2.0",
-    "dotenv": "^8.2.0"
-  }
+	"name": "create-spec-pages",
+	"version": "1.0.0",
+	"description": "A quick and dirty utility to create markdown files out of Unreal Engine 4 specifiers stored in Contentful. ",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "node index.js ./test"
+	},
+	"author": "Mowgl33",
+	"license": "ISC",
+  "repository": "https://github.com/UnrealisticDev/create-spec-pages.git",
+	"dependencies": {
+		"contentful": "^8.2.0",
+		"dotenv": "^8.2.0"
+	}
 }
