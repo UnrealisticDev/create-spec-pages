@@ -8,3 +8,20 @@ const client = contentful.createClient({
 	space: process.env.CONTENTFUL_SPACE_ID,
 	environment: process.env.CONTENTFUL_ENVIRONMENT_ID,
 });
+
+function getSpecifierEntries() {
+	try {
+		return client.getEntries({
+			content_type: 'unrealSpecifier',
+			limit: 1000,
+		});
+	} catch (error) {
+		console.error(error);
+	}
+}
+
+async function main() {
+    const specEntries = await getSpecifierEntries();
+}
+
+main();
